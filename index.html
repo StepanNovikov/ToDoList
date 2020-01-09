@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ToDoList</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="main">
+        <h1>TO-DO-LIST</h1>
+        <form class="" action="index.html" method="POST">
+            <input type="text" name="task" placeholder="new task">
+            <button type="submit"><strong>+</strong></button>
+        </form>
+        <div class="tasksBoard">
+            <ul>
+                <li><span class="delete">х</span><input type="checkbox"><label>JavaScript</label></li>
+                <li><span class="delete">х</span><input type="checkbox"><label>Vue.js</label></li>
+                <li><span class="delete">х</span><input type="checkbox"><label>React.js</label></li>
+                <li><span class="delete">х</span><input type="checkbox"><label>Node.js</label></li>
+            </ul>
+            <a id="clear">Clear</a>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
