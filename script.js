@@ -9,15 +9,22 @@ function load(){
             select = document.getElementById("select").selectedIndex,
             options = document.getElementById("select").options
 
-        if(input.value != '' && options[select].text != ''){
+        if(options[select].text == 'Select Priority'){
+            alert("Выберите приоритет задачи!")
+        } else if(input.value == '') {
+            alert("Задача не может быть пустой!")
+        } else {
             addTask(input.value, options[select].text)
         }
-        input.value = ''
+        //input.value = ''
     })
 
     clear.addEventListener('click', function(){
-        const ul = document.querySelector("ul")
+        const ul = document.querySelector("ul"),
+              tasksBoard = document.querySelector(".tasksBoard")
         ul.innerHTML = ''
+        tasksBoard.style.display = 'none'
+
     })
 
     ul.addEventListener("click", function(event){
@@ -32,7 +39,7 @@ function load(){
 function addTask(task,priority){
     const ul = document.querySelector("ul"),
           li = document.createElement("li")
-          
+
     li.innerHTML = `<span class="delete">х</span><span class="priority">Priority: ${priority}</span><input type="checkbox"><label class="label">${task}</label>`
     ul.appendChild(li)
     document.querySelector(".tasksBoard").style.display = "block"
