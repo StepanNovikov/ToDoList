@@ -2,7 +2,9 @@ load()
 function load(){
     const form = document.querySelector("form"),
           clear = document.getElementById("clear"),
-          ul = document.querySelector("ul")
+          ul = document.querySelector("ul"),
+          sortName =document.getElementById("sortName"),
+          sortPriority = document.getElementById("sortPriority")
     form.addEventListener('submit', function(event){
         event.preventDefault();
         let input = document.querySelector("input"),
@@ -16,7 +18,7 @@ function load(){
         } else {
             addTask(input.value, options[select].text)
         }
-        //input.value = ''
+
     })
 
     clear.addEventListener('click', function(){
@@ -34,6 +36,30 @@ function load(){
             tickTask(event)
         }
     })
+
+    sortName.addEventListener('click', function(){
+        const list = document.querySelector(".sortList")
+        let b,shouldSwitch
+        let switching = true
+        let i
+        while(switching){
+            switching = false;
+            getLi = list.getElementsByTagName("LI")
+            for( i = 0; i < (getLi.length - 1);i++){
+                shouldSwitch = false
+                if (getLi[i].innerHTML.toLowerCase() > getLi[i + 1].innerHTML.toLowerCase()) {
+                    shouldSwitch = true
+                    break
+                }
+            }
+            if(shouldSwitch){
+                getLi[i].parentNode.insertBefore(getLi[i + 1], getLi[i])
+                switching = true
+            }
+        }
+    })
+
+    
 }
 
 function addTask(task,priority){

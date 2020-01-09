@@ -12,7 +12,7 @@
         <h1>TO-DO-LIST</h1>
         <form class="" action="index.html" method="POST">
             <input type="text" name="task" placeholder="New task">
-            <button type="submit"><strong>+</strong></button>
+            <button class= "addTask" type="submit"><strong>+</strong></button>
             <select id="select" required>
                 <option selected="selected" disabled>Select Priority</option>
                 <option value="High">High</option>
@@ -21,11 +21,16 @@
             </select>
         </form>
         <div class="tasksBoard">
-            <ul>
+            <ul class="sortList">
                 <!-- <li><span class="delete">х</span><input type="checkbox"><span class="priority">Priority: </span><label>Task</label></li> -->
             </ul>
             <a id="clear">Clear</a>
+            <div class="filterBoard">
+                <button id="sortName">Sort by name</button>
+                <button id="sortPriority">Sort by priority</button>
+            </div>
         </div>
+        
     </div>
     <script src="./script.js"></script>
 </body>
