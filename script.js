@@ -36,31 +36,33 @@ function load(){
             tickTask(event)
         }
     })
-
-    sortName.addEventListener('click', function(){
-        const list = document.querySelector(".sortList")
-        let b,shouldSwitch
-        let switching = true
-        let i
-        while(switching){
-            switching = false;
-            getLi = list.getElementsByTagName("LI")
-            for( i = 0; i < (getLi.length - 1);i++){
-                shouldSwitch = false
-                if (getLi[i].innerHTML.toLowerCase() > getLi[i + 1].innerHTML.toLowerCase()) {
-                    shouldSwitch = true
-                    break
-                }
-            }
-            if(shouldSwitch){
-                getLi[i].parentNode.insertBefore(getLi[i + 1], getLi[i])
-                switching = true
-            }
-        }
-    })
-
     
 }
+
+sortName.addEventListener('click', function(){
+    const list = document.querySelector(".sortList")
+    let getLi,shouldSwitch
+    let switching = true
+    let i
+    while(switching){
+        switching = false;
+        getLi = list.getElementsByTagName("LI")
+        getLabel = list.getElementsByTagName("label")
+        console.log(getLabel[0].innerHTML)
+        for( i = 0; i < (getLabel.length );i++){
+            shouldSwitch = false
+            //console.log(getLi[i].innerHTML.toLowerCase())
+            if (getLabel[i].innerHTML.toLowerCase() > getLabel[i + 1].innerHTML.toLowerCase()) {
+                shouldSwitch = true
+                break
+            }
+        }
+        if(shouldSwitch){
+            getLi[i].parentNode.insertBefore(getLi[i + 1], getLi[i])
+            switching = true
+        }
+    }
+})
 
 function addTask(task,priority){
     const ul = document.querySelector("ul"),
