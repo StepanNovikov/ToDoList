@@ -5,9 +5,12 @@ function load(){
           ul = document.querySelector("ul")
     form.addEventListener('submit', function(event){
         event.preventDefault();
-        let input = document.querySelector("input")
-        if(input.value != ''){
-            addTask(input.value)
+        let input = document.querySelector("input"),
+            select = document.getElementById("select").selectedIndex,
+            options = document.getElementById("select").options
+
+        if(input.value != '' && options[select].text != ''){
+            addTask(input.value, options[select].text)
         }
         input.value = ''
     })
@@ -26,10 +29,11 @@ function load(){
     })
 }
 
-function addTask(task){
+function addTask(task,priority){
     const ul = document.querySelector("ul"),
           li = document.createElement("li")
-    li.innerHTML = `<span class="delete">х</span><input type="checkbox"><label>${task}</label>`
+          
+    li.innerHTML = `<span class="delete">х</span><span class="priority">Priority: ${priority}</span><input type="checkbox"><label class="label">${task}</label>`
     ul.appendChild(li)
     document.querySelector(".tasksBoard").style.display = "block"
 }
