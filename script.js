@@ -5,7 +5,7 @@ function load(){
           ul = document.querySelector("ul"),
           sortName = document.getElementById("sortName"),
           sortPriority = document.getElementById("sortPriority");
-          
+
     form.addEventListener('submit', function(event){
         event.preventDefault();
         let input = document.querySelector("input"),
@@ -66,14 +66,67 @@ sortName.addEventListener('click', function(){
     }
 })
 
+sortPriority.addEventListener('click', function(){
+    const list = document.querySelector(".sortList");
+    let li = "";
+    let shouldSwitch = "";
+    let switching = true;
+    let i = 0;
+
+    while(switching){
+        switching = false;
+        li = list.getElementsByTagName("LI");
+        let priorityClass = list.getElementsByClassName("priority");
+        for( i = 0; i < priorityClass.length-1; i++){
+            shouldSwitch = false;
+
+            if (priorityClass[i].getAttribute("id")> priorityClass[i + 1].getAttribute("id")) {
+                shouldSwitch = true;
+                break;
+            }
+        }
+        if(shouldSwitch){
+            li[i].parentNode.insertBefore(li[i + 1], li[i]);
+            switching = true;
+        }
+    }
+
+})
+
 function addTask(task,priority){
     const ul = document.querySelector("ul"),
-          li = document.createElement("li");
+          li = document.createElement("li"),
+          listLi  = document.getElementsByTagName("li"),
+          sortName = document.getElementById("sortName"),
+          sortPriority = document.getElementById("sortPriority");
+    let priorityId = 0;
 
-    li.innerHTML = `<span class="delete">х</span><span class="priority">Priority: ${priority}</span><input type="checkbox"><label class="label">${task}</label>`;
+    switch(priority){
+        case "High":
+            priorityId = 1;
+            break;
+        case "Middle":
+            priorityId = 2;
+            break;
+        case "Low":
+            priorityId = 3;
+    }      
+
+    li.innerHTML = `<span class="delete">х</span><span class="priority" id=${priorityId}>Priority: ${priority}</span><input type="checkbox"><label class="label">${task}</label>`;
     ul.appendChild(li);
+    
     document.querySelector(".tasksBoard").style.display = "block";
-    document.querySelector(".filterBoard").style.display = "block"
+    document.querySelector(".filterBoard").style.display = "block";
+    sortName.setAttribute("disabled", "true");
+    sortPriority.setAttribute("disabled","true");
+    
+    if(listLi.length > 1) {
+        sortName.removeAttribute("disabled");
+        sortPriority.removeAttribute("disabled");
+        sortName.style.backgroundColor = "#ff5e00c9";
+        sortPriority.style.backgroundColor = "#ff5e00c9";
+    }
+    
 }
 
 function deleteTask(event){
