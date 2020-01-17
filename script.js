@@ -5,6 +5,7 @@ function load(){
           ul = document.querySelector("ul"),
           sortName = document.getElementById("sortName"),
           sortPriority = document.getElementById("sortPriority");
+          
 
     form.addEventListener('submit', function(event){
         event.preventDefault();
@@ -126,7 +127,6 @@ function addTask(task,priority){
         sortName.style.backgroundColor = "#ff5e00c9";
         sortPriority.style.backgroundColor = "#ff5e00c9";
     }
-    
 }
 
 function deleteTask(event){
@@ -144,3 +144,8 @@ function tickTask(event){
         task.style.color = "#2f4f4f";
     }
 }
+
+
+
+
+
