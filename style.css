@@ -59,14 +59,16 @@ input[type="text"]{
 }
 
 .filterBoard {
-    background-color: #fff;
+    /* background-color: #fff;
     margin-top: -97px;
     padding-top: 15px;
     padding-bottom: 15px;
     width: 100px;
     margin-left: 642px;
     display: block;
-    font-size: 20px;
+    font-size: 20px; */
+    margin-top: 20px;
+    display: none;
 }
 
 ul{
@@ -110,7 +112,9 @@ a{
 
 #sortName,
 #sortPriority{
-    background-color: #ff5e0057;
+    background-color: #ff5e00c9;
     border-radius: 20px;
     outline: none;
+    width: 100px;
+    height: 30px;
 }
